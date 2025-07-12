@@ -42,13 +42,13 @@ let books = JSON.parse(localStorage.getItem("books")) || [];
 
       <div class="pay">
         <input type="radio" name="pay" id="vodafonecash" value="vodafonecash" onclick="showinput()">
-        <img src="./cash.jpg" alt="vodafonecash">
+        <img src="./download.png" alt="vodafonecash">
         <label for="vodafonecash">Vodafone Cash</label>
       </div>
 
       <div class="pay pay-insta">
         <input type="radio" name="pay" id="instapay" value="instapay" onclick="showinput()">
-        <img src="./insta.jpg" alt="instapay">
+        <img src="./images.png" alt="instapay">
         <label for="instapay" >InstaPay</label>
       </div>
       <div id="num"></div>
