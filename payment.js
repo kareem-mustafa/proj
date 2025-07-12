@@ -9,7 +9,7 @@ window.onload = function () {
   document.body.appendChild(header);
   document.body.appendChild(cards);
   //get item from localstorage
-let books = JSON.parse(localStorage.getItem("user.books")) || [];
+let books = JSON.parse(localStorage.getItem("books")) || [];
   //show last item
   let book = books[books.length - 1];
   if (book) {
@@ -42,13 +42,13 @@ let books = JSON.parse(localStorage.getItem("user.books")) || [];
 
       <div class="pay">
         <input type="radio" name="pay" id="vodafonecash" value="vodafonecash" onclick="showinput()">
-        <img src="./cash.jpg" alt="vodafonecash">
+        <img src="./download.png" alt="vodafonecash">
         <label for="vodafonecash">Vodafone Cash</label>
       </div>
 
       <div class="pay pay-insta">
         <input type="radio" name="pay" id="instapay" value="instapay" onclick="showinput()">
-        <img src="./ista.jpg" alt="instapay">
+        <img src="./images.png" alt="instapay">
         <label for="instapay" >InstaPay</label>
       </div>
       <div id="num"></div>
@@ -73,22 +73,23 @@ function showinput() {
   div.appendChild(input);
   div.appendChild(button);
   button.addEventListener("click", () => {
-    event.preventDefault()
-        const number = input.value.trim();
+    event.preventDefault();
+    const number = input.value.trim();
     if (!mobilenumregexp.test(number)) {
       Swal.fire({
         title: "Please enter a valid number",
         icon: "warning",
         draggable: true,
       });
-      input.focus()
-    }else{
-        Swal.fire({
+      input.focus();
+    } else {
+      Swal.fire({
         title: "your book was added",
         icon: "success",
         draggable: true,
       });
-      div.innerHTML=""
+      div.innerHTML = "";
     }
   });
+
 }
