@@ -9,7 +9,7 @@ window.onload = function () {
   document.body.appendChild(header);
   document.body.appendChild(cards);
   //get item from localstorage
-let books = JSON.parse(localStorage.getItem("books")) || [];
+let books = JSON.parse(localStorage.getItem("user.books")) || [];
   //show last item
   let book = books[books.length - 1];
   if (book) {
