@@ -76,7 +76,8 @@ reset.type = "reset";
 reset.textContent = "reset";
 //form end
 //to view conent in the page
-document.body.appendChild(header);
+// document.body.appendChild(header);
+document.querySelector('.main-wrapper').prepend(header);
 form.appendChild(bname);
 form.appendChild(price);
 form.appendChild(description);
@@ -87,15 +88,17 @@ form.appendChild(condition);
 form.appendChild(image);
 form.appendChild(submit);
 form.appendChild(reset);
-div.appendChild(form);
+// div.appendChild(form);
+document.querySelector("#form-container").appendChild(form);
+
 document.body.appendChild(div);
 document.body.appendChild(cards)
 
 
 // back data from localstorage
 let booksarr
-if(localStorage.books !=null){
-    booksarr=JSON.parse(localStorage.books)
+if(localStorage.userBooks !=null){
+    booksarr=JSON.parse(localStorage.userBooks)
 }
 else{
 booksarr =[]
@@ -146,7 +149,7 @@ form.addEventListener("submit", function () {
   };
 
   booksarr.push(obj); //add obj into array
-  localStorage.setItem("books", JSON.stringify(booksarr));
+  localStorage.setItem("userBooks", JSON.stringify(booksarr));
 Swal.fire({
   position: "center",
   icon: "success",
