@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>My Account</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f7f3;
+      padding: 20px;
+      color: #333;
+    }
+
+    .account-container {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      color: #74642F;
+      margin-bottom: 40px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section h3 {
+      color: #5c5225;
+      margin-bottom: 20px;
+      font-size: 22px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    .book-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
+    }
+
+    .book-card {
+      background: #faf8f0;
+      border: 1px solid #e0dccc;
+      border-radius: 10px;
+      width: 200px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: slideUp 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    .book-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .book-card h4 {
+      font-size: 16px;
+      color: #333;
+      margin: 5px 0;
+    }
+
+    .book-card p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .book-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .book-list {
+        justify-content: center;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="account-container">
+    <h2>Welcome, <span id="usernameDisplay"></span></h2>
+
+    <div class="section">
+      <h3>Purchased Books</h3>
+      <div class="book-list" id="purchasedBooks"></div>
+    </div>
+
+    <div class="section">
+      <h3>Books You've Uploaded</h3>
+      <div class="book-list" id="soldBooks"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const username = localStorage.getItem("username");
+    if (!username) {
+      window.location.href = "login.html"; 
+    }
+  });
+    document.addEventListener("DOMContentLoaded", () => {
+      const username = localStorage.getItem("username");
+      document.getElementById("usernameDisplay").textContent = username || "User";
+
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const purchasedContainer = document.getElementById("purchasedBooks");
+
+      if (cart.length > 0) {
+        cart.forEach((book, index) => {
+          const card = document.createElement('div');
+          card.className = 'book-card';
+          card.style.animationDelay = `${index * 0.1}s`;
+          card.innerHTML = `
+            <img src="${book.image}" alt="${book.title}">
+            <h4>${book.title}</h4>
+            <p>${book.price} $</p>
+          `;
+          purchasedContainer.appendChild(card);
+        });
+      } else {
+        purchasedContainer.innerHTML = "<p>No books purchased yet.</p>";
+      }
+
+      const sold = JSON.parse(localStorage.getItem("userBooks")) || [];
+      const soldContainer = document.getElementById("soldBooks");
+
+      if (sold.length > 0) {
+        sold.forEach((book, index) => {
+          const card = document.createElement('div');
+          card.className = 'book-card';
+          card.style.animationDelay = `${index * 0.1}s`;
+          card.innerHTML = `
+            <img src="${book.image}" alt="${book.bname}">
+            <h4>${book.bname}</h4>
+            <p>${book.price} $</p>
+          `;
+          soldContainer.appendChild(card);
+        });
+      } else {
+        soldContainer.innerHTML = "<p>No books uploaded yet.</p>";
+      }
+    });
+  </script>
+</body>
+</html>

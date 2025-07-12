@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="book.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 20px;
+      background-color: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .cart-item img {
+      width: 120px;
+      border-radius: 8px;
+    }
+
+    .cart-item h4 {
+      margin: 10px 0 5px;
+    }
+
+    .cart-item p {
+      margin: 5px 0;
+    }
+
+    .clear-all-btn,
+    .checkout-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .clear-all-btn {
+      background-color:#998c62;
+      color: white;
+    }
+
+    .checkout-btn {
+      background-color: #74642F;
+      color: white;
+    }
+
+    #total-section {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    #button-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .empty-message {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 20px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h2>Shopping Cart</h2>
+  <div id="cartContainer"></div>
+  <div id="total-section">
+    <h3>Grand Total: <span id="grandTotalAmount">$0.00</span></h3>
+    <div id="button-row">
+      <button class="clear-all-btn" onclick="clearCart()">Clear All</button>
+      <button class="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function renderCart() {
+      const container = document.getElementById("cartContainer");
+      container.innerHTML = "";
+      let grandTotal = 0;
+
+      if (cartItems.length === 0) {
+        document.getElementById("grandTotalAmount").textContent = "$0.00";
+        container.innerHTML = `<p class="empty-message">Your cart is empty.</p>`;
+        return;
+      }
+
+      cartItems.forEach((book, index) => {
+        let quantity = book.quantity || 1;
+        grandTotal += book.price * quantity;
+
+        const item = document.createElement("div");
+        item.classList.add("cart-item");
+
+        item.innerHTML = `
+          <img src="${book.image}" alt="${book.title}" />
+          <div>
+            <h4>${book.title}</h4>
+            <p>${book.description || "No description available."}</p>
+            <p><strong>Price:</strong> $${book.price}</p>
+            <p><strong>Quantity:</strong> 
+              <button onclick="changeQty(${index}, -1)">-</button>
+              <span style="margin: 0 10px">${quantity}</span>
+              <button onclick="changeQty(${index}, 1)">+</button>
+            </p>
+            <p><strong>Total:</strong> $${(book.price * quantity).toFixed(2)}</p>
+            <button onclick="removeItem(${index})" style="margin-top:10px">Remove from Cart</button>
+          </div>
+        `;
+
+        container.appendChild(item);
+      });
+
+      document.getElementById("grandTotalAmount").textContent = `$${grandTotal.toFixed(2)}`;
+    }
+
+    function changeQty(index, change) {
+      let item = cartItems[index];
+      item.quantity = (item.quantity || 1) + change;
+      if (item.quantity <= 0) {
+        cartItems.splice(index, 1);
+      }
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      renderCart();
+    }
+
+    function removeItem(index) {
+      cartItems.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+      renderCart();
+    }
+
+    function clearCart() {
+      cartItems = [];
+      localStorage.removeItem("cart");
+      renderCart();
+    }
+
+    function checkout() {
+      if (cartItems.length === 0) {
+        alert("Cart is empty!");
+        return;
+      }
+      window.location.href = "thanks.html";
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>
+

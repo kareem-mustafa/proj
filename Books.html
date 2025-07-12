@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Books Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: "Prata", serif;
+      background: #f9f9f9;
+      padding: 2rem;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+     color: #f9f9f9;
+    }
+    .filters input, .filters select {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.2rem;
+      font-size: 1rem;
+      color: #f9f9f9;
+      background-color: #74642F;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Books Collection</h1>
+
+  <!-- Filters Section -->
+  <div class="filters">
+    <input type="text" id="search" placeholder="Search by title" />
+
+    <select id="price-filter">
+      <option value="">All Prices</option>
+      <option value="80">Under $80</option>
+      <option value="100">Under $100</option>
+      <option value="120">Under $120</option>
+    </select>
+
+    <select id="condition-filter">
+      <option value="">All Conditions</option>
+      <option value="new">New</option>
+      <option value="used">Used</option>
+    </select>
+
+    <select id="category-filter">
+      <option value="">All Categories</option>
+    </select>
+
+    <select id="author-filter">
+      <option value="">All Authors</option>
+    </select>
+
+    <select id="publisher-filter">
+      <option value="">All Publishers</option>
+    </select>
+  </div>
+
+  <!--  Books Container -->
+  <div id="books-container" class="product-grid"></div>
+
+  <!-- Main JS File -->
+  <script src="books.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

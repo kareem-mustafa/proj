@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Prata", serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url(images/leaf.jpg);
+
+    }
+
+    .thank-you-container {
+      background: #fff;
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .thank-you-container h1 {
+      color:#776b44;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .thank-you-container p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    .thank-you-container .order-id {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .thank-you-container a {
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background-color: #74642F;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+
+    .thank-you-container a:hover {
+      background-color: #5e5327;
+    }
+
+    @media (max-width: 500px) {
+      .thank-you-container {
+        padding: 2rem 1.2rem;
+      }
+
+      .thank-you-container h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thank-you-container">
+    <h1>Thank You!</h1>
+    <p>Your order has been placed successfully.</p>
+    <div class="order-id">Order ID: <span id="orderId"></span></div>
+    <p id="countdown">You will be redirected to the homepage in <span id="seconds">10</span> seconds...</p>
+    <a href="index.html">Back to Home</a>
+  </div>
+
+  <script>
+    
+    const orderId = 'ORD' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+    document.getElementById('orderId').textContent = orderId;
+
+    
+    localStorage.removeItem('cart');
+
+    let seconds = 10;
+    const secondsSpan = document.getElementById('seconds');
+
+    const countdown = setInterval(() => {
+      seconds--;
+      secondsSpan.textContent = seconds;
+
+      if (seconds === 0) {
+        clearInterval(countdown);
+        window.location.href = 'home.html'; 
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>

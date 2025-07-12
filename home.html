@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booksaw</title>
+    <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+	
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #74642F;
+            --primary-hover: #5e5126;
+            --text-color: #333;
+            --light-bg: #f3f2ec;
+            --border-color: #E0E0E0;
+            --search-bg: #efeee8;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            padding-top: 8rem;
+			 overflow-x: hidden;
+        }
+		
+.container,
+.container-fluid,
+.row,
+.product-list
+ {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* * {
+  outline: 1px solid red !important;
+} */
+
+
+        .container-fluid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        /* Top Content Styles */
+        .top-content {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            background-color: white;
+        }
+
+        .social-links ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .right-element {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info {
+            font-size: 14px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .auth-button {
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .auth-button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .user-account {
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .user-account:hover {
+            color: var(--primary-color);
+        }
+
+        
+        /* Header Styles */
+        #header-wrap {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            
+			 background-color: var(--light-bg);
+			
+        }
+
+        #header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--light-bg);
+        }
+
+        .main-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Navigation Styles */
+        .main-menu ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+        }
+
+        .main-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            transition: color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .main-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .main-menu .active a {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 998;
+        }
+
+        .mobile-menu.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .mobile-menu li {
+            margin: 10px 0;
+        }
+
+        .mobile-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            padding: 10px 0;
+            display: block;
+            border-bottom: 1px solid #f0f0f0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu .active a {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 140px;
+            }
+
+            .row {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .top-content .row {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .header-right {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .main-menu ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .search-bar.active .search-toggle {
+                width: 180px;
+            }
+
+            .search-bar.active .search-input {
+                width: 130px;
+            }
+
+            #header .row {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .main-logo {
+                flex-shrink: 0;
+            }
+
+            .main-logo img {
+                height: 40px;
+            }
+
+            #navbar {
+                position: relative;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container-fluid {
+                padding: 0 15px;
+            }
+
+            .social-links ul {
+                gap: 15px;
+            }
+
+            .header-right {
+                gap: 8px;
+            }
+
+            .auth-button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            .search-bar.active .search-toggle {
+                width: 150px;
+            }
+
+            .search-bar.active .search-input {
+                width: 100px;
+            }
+
+            .main-menu a,
+            .mobile-menu a {
+                font-size: 12px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div id="header-wrap">
+  <!-- Top Content -->
+  <div class="top-content">
+    <div class="container-fluid">
+      <div class="row justify-content-between align-items-center">
+        <!-- Social Links -->
+        <div class="social-links col-md-6">
+          <ul class="d-flex gap-3 list-unstyled mb-0">
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </div>
+
+        <!-- Login & Account -->
+        <div class="right-element col-md-6 d-flex justify-content-end align-items-center gap-3 flex-wrap">
+			<a href="account.html" class="user-account d-flex align-items-center gap-1">
+				<i class="fa-solid fa-user"></i>
+				<span>Account</span>
+			</a>
+			<div class="header-right d-flex align-items-center gap-2">
+			  <div id="user-info" class="user-info"></div>
+			  <button id="auth-btn" class="auth-button">Login</button>
+			</div>
+          <!-- Search -->
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header id="header">
+    <div class="container-fluid">
+      <div class="row justify-content-between align-items-center">
+        <!-- Logo -->
+        <div class="col-6 col-md-3 main-logo">
+          <a href="index.html">
+            <img src="images/main-logo.png" alt="logo" style="max-height: 50px;">
+          </a>
+        </div>
+
+        <!-- Desktop Menu -->
+        <nav id="navbar" class="col-md-9 d-none d-md-flex justify-content-end">
+          <div class="main-menu">
+            <ul class="menu-list d-flex gap-4 list-unstyled mb-0">
+              <li class="menu-item active"><a href="home.html">Home</a></li>
+              <li class="menu-item"><a href="Books.html">Our Store</a></li>
+              <li class="menu-item"><a href="sell.html">Sell Your Books</a></li>
+              <li class="menu-item"><a href="cart.html">Cart</a></li>
+              <li class="menu-item"><a href="Contact.html">Contact Us</a></li>
+              <li class="menu-item"><a href="about.html">About Us</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Hamburger (Mobile only) -->
+        <div class="col-6 d-flex justify-content-end d-md-none">
+          <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="col-12">
+          <div class="mobile-menu d-none" id="mobile-menu">
+            <ul class="list-unstyled p-3">
+              <li class="menu-item active"><a href="home.html">Home</a></li>
+              <li class="menu-item"><a href="Books.html">Our Store</a></li>
+              <li class="menu-item"><a href="sell.html">Sell Your Books</a></li>
+              <li class="menu-item"><a href="cart.html">Cart</a></li>
+              <li class="menu-item"><a href="Contact.html">Contact Us</a></li>
+              <li class="menu-item"><a href="about.html">About Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="main-banner">
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="main-slider pattern-overlay">
+				<div class="slides-wrapper" style="overflow: hidden;">
+					<div class="slides" style="display: flex; transition: transform 0.5s ease;">
+						<!-- Slide 1 -->
+						<div class="slider-item slide" style="min-width: 100%;display: flex;">
+							<div class="banner-content">
+								<h2 class="banner-title" >Life of the Wild</h2>
+								<p>An inspiring journey through nature’s beauty, exploring wildlife adventures, survival, harmony, and the hidden wonders of the wilderness.
+									
+								</p>
+								<div class="btn-wrap">
+									<a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i class="icon icon-ns-arrow-right"></i></a>
+								</div>
+							</div>
+							<img src="images/main-banner1.jpg" alt="banner" class="banner-image">
+						</div>
+						
+						<!-- Slide 2 -->
+						<div class="slider-item slide" style="min-width: 100%;display: flex;">
+							<div class="banner-content">
+								<h2 class="banner-title">Birds gonna be Happy</h2>
+								<p>A cheerful tale about birds finding joy, freedom, and friendship in nature, filled with vibrant skies and heartwarming adventures.
+									
+								</p>
+								<div class="btn-wrap">
+									<a href="#" class="btn btn-outline-accent btn-accent-arrow">Read More<i class="icon icon-ns-arrow-right"></i></a>
+								</div>
+							</div>
+							<img src="images/main-banner2.jpg" alt="banner" class="banner-image">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+		<!-- quotation -->
+		  <div id="quotation" class="align-center pb-5 mb-5"style="text-align: center; margin: 0 auto 30px;" >
+		  <div class="inner-content" >
+			<h2 class="sectionn-title divider banner-title">Quote of the day</h2>
+				  <blockquote data-aos="fade-up">
+					  <q>“The more that you read, the more things you will know. The more that you learn, the more places
+				    you’ll go.”</q>
+				<div class="author-name">Dr. Seuss</div>
+				  </blockquote>
+			  </div>
+		  </div>
+
+<div class="cont">
+
+<div id="special-offer" >
+
+  <div class="section-header align-center">
+    <div class="title">
+      <span>Grab your opportunity</span>
+    </div>
+    <h2 class="sectionn-title divider banner-title">Books with offer</h2>
+  </div>
+
+    <div class="row">
+      <div class="inner-content">
+        <div class="product-list" data-aos="fade-up">
+          
+          <div class="grid product-grid">
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="download-app" class="leaf-pattern-overlay">
+	<div class="corner-pattern-overlay"></div>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-5">
+							<figure>
+								<img src="images/device.png" alt="phone" class="single-image">
+							</figure>
+						</div>
+						<div class="col-md-7">
+							<div class="app-info">
+								<h2 class="section-title divider banner-title">Download our app now !</h2>
+								<p>"A smart app to discover new books and sell your old ones. Connect with readers, explore trending titles, and give your used books a second life. Easy, fast, and rewarding."</p>
+									<div class="google-app">
+										<img src="images/google-play.jpg" alt="google play">
+									<img src="images/app-store.jpg" alt="app store">
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<footer id="footer">
+  <div class="footer-container">
+    <div class="footer-column brand-column">
+      <div class="footer-item">
+        <div class="company-brand">
+          <img src="images/main-logo.png" alt="logo" class="footer-logo">
+          <p>
+            Discover the latest books and easily sell your old ones with our innovative app. Connect with book lovers, explore top reads, and turn your bookshelf into cash. Simple, secure, and perfect for every reader and seller.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-column links-column">
+      <div class="footer-menu">
+        <h5>My Account</h5>
+        <ul class="menu-list">
+          <li class="menu-item"><a href="login.html">Sign In</a></li>
+          <li class="menu-item"><a href="Cart.html">View Cart</a></li>
+       
+        </ul>
+      </div>
+
+      <div class="footer-menu">
+        <h5>Contact Us</h5>
+        <div class="social-links">
+          <ul>
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+	 <button onclick="scrollToTop()" id="backToTop" title="Go to top">&#8679;</button>
+
+  
+ 
+  </div>
+</footer>
+
+
+	
+<script src="script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

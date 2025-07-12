@@ -1,0 +1,283 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background-color: #f9f9f9;
+    }
+
+    .about-section,
+    .contact-form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-image {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .about-image img {
+      width: 60%;
+    }
+
+    .about-text {
+      flex: 2 1 300px;
+    }
+
+    h1,
+    h2 {
+      color: #333;
+      font-family: "Prata", Georgia, serif;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 0.7rem 1.5rem;
+      background-color: #74642F;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #5e5327;
+    }
+
+    .message {
+      color: rgb(127, 129, 127);
+      font-weight: bold;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+    }
+
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-image img {
+        width: 80%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        margin: 1rem;
+      }
+
+      input,
+      textarea,
+      button {
+        font-size: 0.95rem;
+      }
+
+      h1, h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+ 
+  <div class="about-section">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="images/main-logo.png" alt="About Us" />
+      </div>
+      <div class="about-text">
+        <h1>About Us</h1>
+        <p>
+          We’re a passionate team of book lovers dedicated to connecting readers. Our app helps you discover new releases and sell pre-loved books easily. Whether you're looking for your next great read or giving old books a new home, we're here to make reading more accessible, sustainable, and enjoyable for everyone.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="contact-form">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+      <p class="message" id="formMessage"></p>
+    </form>
+  </div>
+
+ 
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const contact = { name, email, message, time: new Date().toISOString() };
+      const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+      contacts.push(contact);
+      localStorage.setItem("contacts", JSON.stringify(contacts));
+
+      document.getElementById("formMessage").textContent = "Thank you! Your message has been saved.";
+      document.getElementById("contactForm").reset();
+    });
+  </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+      background-color: #f7f6f2;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .about-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .about-images {
+      flex: 1 1 350px;
+      position: relative;
+      height: 40rem;
+    }
+
+    .about-images img.leaf {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      z-index: 1;
+     
+    }
+
+    .about-images img.logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      z-index: 2;
+    }
+
+    .about-content {
+      flex: 2 1 500px;
+    }
+
+    .about-content h1 {
+      font-size: 38px;
+      margin-bottom: 20px;
+      color: #74642F;
+    }
+
+    .about-content p {
+      font-size: 17px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #5c5225;
+    }
+
+    @media (max-width: 992px) {
+      .about-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-content h1 {
+        font-size: 32px;
+      }
+
+      .about-images {
+        height: 30rem;
+      }
+
+      .about-images img.logo {
+        width: 80%;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="about-section">
+    <div class="about-images">
+      <img src="images/leaf.png" alt="Leaf Background" class="leaf" />
+      <img src="images/main-logo.png" alt="Logo" class="logo" />
+    </div>
+    <div class="about-content">
+      <h1>About Our Platform</h1>
+      <p>
+        We are a <span class="highlight">community-driven platform</span> dedicated to connecting readers, writers, and book sellers. Our goal is to make reading more <span class="highlight">accessible, sustainable</span>, and enjoyable for everyone.
+      </p>
+      <p>
+        Whether you're buying your next favorite novel or listing your old books for others to discover, we’re here to help you every step of the way.
+      </p>
+      <p>
+        We believe books change lives — and through our service, we're helping stories reach more people across the world.
+      </p>
+    </div>
+  </section>
+
+</body>
+</html>

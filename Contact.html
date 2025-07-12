@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+    }
+
+    .contact-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    }
+
+    .contact-text {
+      flex: 1 1 400px;
+      padding: 30px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .contact-text h1 {
+      font-size: 36px;
+      color: #74642F;
+      margin-bottom: 20px;
+    }
+
+    .contact-text p {
+      font-size: 17px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .contact-image {
+      text-align: center;
+    }
+
+    .contact-image img {
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .contact-form {
+      flex: 1 1 500px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.7s ease;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #74642F;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(116, 100, 47, 0.2);
+    }
+
+    .contact-form button {
+      background-color: #74642F;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .contact-form button:hover {
+      background-color: #5c5225;
+    }
+
+    .message {
+      font-weight: bold;
+      color: #74642F;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-section {
+        flex-direction: column;
+      }
+
+      .contact-text,
+      .contact-form {
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .contact-image img {
+        width: 90%;
+      }
+
+      .contact-text h1 {
+        font-size: 28px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="contact-section">
+   
+    <div class="contact-text">
+      <h1>Contact Us</h1>
+      <p>
+        We'd love to hear from you! Whether you have a question, feedback, or just want to say hello —
+        drop us a message and we'll get back to you as soon as possible.
+      </p>
+     
+      <div class="contact-image">
+        <img src="images/leaf.jpg" alt="Leaf Decoration" />
+      </div>
+    </div>
+
+    
+    <div class="contact-form">
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p class="message" id="formMessage"></p>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const contact = { name, email, message, time: new Date().toISOString() };
+      const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+      contacts.push(contact);
+      localStorage.setItem("contacts", JSON.stringify(contacts));
+
+      document.getElementById("formMessage").textContent = "Thank you! Your message has been saved.";
+      document.getElementById("contactForm").reset();
+    });
+  </script>
+
+</body>
+</html>

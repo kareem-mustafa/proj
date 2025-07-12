@@ -1,0 +1,262 @@
+[
+  {
+    "id": 1,
+    "title": "My Beautiful Hijab",
+    "price": 90,
+    "image": "/images/my-beautiful-hijab.jpg",
+    "description": "A heartwarming story promoting pride and identity for young Muslim girls.",
+    "author": "Aisha Abdullah",
+    "publisher": "Little Crescent Books",
+    "category": "Children"
+  },
+  {
+    "id": 2,
+    "title": "Joud Wants A Castle",
+    "price": 88,
+    "image": "/images/joud-wants-a-castle.jpg",
+    "description": "An imaginative journey of a child building dreams brick by brick.",
+    "author": "Layla Haddad",
+    "publisher": "Dreamline Publishing",
+    "category": "Children"
+  },
+  {
+    "id": 3,
+    "title": "Gates and Tales",
+    "price": 75,
+    "image": "/images/gates-and-tales.jpg",
+    "description": "A collection of magical tales behind mysterious gates.",
+    "author": "Maya Karim",
+    "publisher": "StoryTree House",
+    "category": "Children"
+  },
+  {
+    "id": 4,
+    "title": "What the Ladybird Heard",
+    "price": 85,
+    "image": "/images/what-the-ladybird-heard.jpg",
+    "description": "A fun-filled farm adventure full of clever animal plans.",
+    "author": "Julia Donaldson",
+    "publisher": "Macmillan Children’s Books",
+    "category": "Children"
+  },
+  {
+    "id": 5,
+    "title": "Ten Apples Up on Top",
+    "price": 72,
+    "image": "/images/ten-apples-up-on-top.jpg",
+    "description": "A silly rhyming tale about balancing apples and confidence.",
+    "author": "Dr. Seuss",
+    "publisher": "Beginner Books",
+    "category": "Children",
+    "condition": "new"
+  },
+  {
+    "id": 6,
+    "title": "The Maid",
+    "price": 110,
+    "image": "/images/the-maid.jpg",
+    "description": "A gripping mystery told through the eyes of an unconventional heroine.",
+    "author": "Nita Prose",
+    "publisher": "Ballantine Books",
+    "category": "Fantasy",
+     "condition": "new"
+  },
+  {
+    "id": 7,
+    "title": "Hitchhiker's Guide to the Galaxy",
+    "price": 100,
+    "image": "/images/hitchhikers-guide-to-the-galaxy.jpg",
+    "description": "A wildly imaginative sci-fi classic full of humor and adventure.",
+    "author": "Douglas Adams",
+    "publisher": "Pan Books",
+    "category": "Fantasy",
+     "condition": "new"
+  },
+  {
+    "id": 8,
+    "title": "Shadow and Bone",
+    "price": 115,
+    "image": "images/shadow-and-bone-book.jpg",
+    "description": "A fantasy tale of darkness and power in a divided world.",
+    "author": "Leigh Bardugo",
+    "publisher": "Henry Holt & Co.",
+    "category": "Fantasy",
+     "condition": "new"
+  },
+  {
+    "id": 9,
+    "title": "Gone Girl",
+    "price": 120,
+    "image": "images/gone-girl.jpg",
+    "description": "A thrilling psychological suspense full of twists and deception.",
+    "author": "Gillian Flynn",
+    "publisher": "Crown Publishing",
+    "category": "Fantasy",
+     "condition": "new"
+  },
+  {
+    "id": 10,
+    "title": "Awakenings",
+    "price": 108,
+    "image": "images/awakenings.jpg",
+    "description": "A remarkable true story of neurological miracles.",
+    "author": "Oliver Sacks",
+    "publisher": "Vintage",
+    "category": "Psychology",
+     "condition": "new"
+  },
+  {
+    "id": 11,
+    "title": "The Monk Who Sold His Ferrari",
+    "price": 99,
+    "image": "/images/the-monk-who-sold-his-ferrari.jpg",
+    "description": "A self-help fable on purpose, success, and inner peace.",
+    "author": "Robin Sharma",
+    "publisher": "HarperCollins",
+    "category": "Psychology",
+     "condition": "new"
+  },
+  {
+    "id": 12,
+    "title": "Don't Touch My Toys",
+    "price": 85,
+    "image": "/images/dont-touch-my-toys.jpg",
+    "description": "A children's guide to boundaries and respect.",
+    "author": "Mona Eid",
+    "publisher": "Safe Minds Books",
+    "category": "Psychology",
+     "condition": "new"
+  },
+  {
+    "id": 13,
+    "title": "The North Pole",
+    "price": 92,
+    "image": "/images/the-north-pole.jpg",
+    "description": "A fascinating look at one of Earth's most extreme places.",
+    "author": "Danielle Frost",
+    "publisher": "Polar World Press",
+    "category": "Psychology",
+     "condition": "new"
+  },
+  {
+    "id": 14,
+    "title": "Rachel Lynch Dark Game",
+    "price": 104,
+    "image": "/images/rachel-lynch-dark-game.jpg",
+    "description": "A detective’s gripping investigation into a deadly criminal web.",
+    "author": "Rachel Lynch",
+    "publisher": "Canelo",
+    "category": "Novel",
+     "condition": "new"
+  },
+  {
+    "id": 15,
+    "title": "Birds Gonna Be Happy",
+    "price": 95,
+    "image": "/images/main-banner2.jpg",
+    "description": "An inspiring tale of freedom and the joy of nature.",
+    "author": "Timbur Hood",
+    "publisher": "Freedom Press",
+    "category": "Novel",
+     "condition": "new"
+  },
+  {
+    "id": 16,
+    "title": "Life of the Wild",
+    "price": 120,
+    "image": "/images/main-banner1.jpg",
+    "description": "A thrilling adventure into the heart of untamed wilderness.",
+    "author": "Sarah Greenwood",
+    "publisher": "Nature House",
+    "category": "Novel",
+     "condition": "new"
+  },
+  {
+    "id": 17,
+    "title": "Here and Now",
+    "price": 105,
+    "image": "/images/here-and-now.jpg",
+    "description": "A thoughtful reflection on living in the present moment.",
+    "author": "David L. Moore",
+    "publisher": "Mindful Reads",
+    "category": "Novel",
+     "condition": "new"
+  },
+  {
+    "id": 18,
+    "title": "I Was Born Yesterday",
+    "price": 98,
+    "image": "/images/i-was-born-yesterday.jpg",
+    "description": "A lyrical journey of identity, love, and self-discovery.",
+    "author": "Nora Musa",
+    "publisher": "Soul Verse Press",
+    "category": "Romantic",
+     "condition": "new"
+  },
+  {
+    "id": 19,
+    "title": "The Return",
+    "price": 99,
+    "image": "/images/the-return.jpg",
+    "description": "A haunting tale of homecoming and rediscovery.",
+    "author": "Nicholas Sparks",
+    "publisher": "Grand Central",
+    "category": "Romantic",
+     "condition": "new"
+  },
+  {
+    "id": 20,
+    "title": "The Sun in Her Eyes",
+    "price": 100,
+    "image": "/images/the-sun-in-her-eyes.jpg",
+    "description": "A moving story of memory, love, and new beginnings.",
+    "author": "Paige Toon",
+    "publisher": "Simon & Schuster",
+    "category": "Romantic",
+     "condition": "new"
+  },
+  {
+    "id": 21,
+    "title": "Jane Austen's Bookshelf",
+    "price": 106,
+    "image": "/images/jane-austens-bookshelf.jpg",
+    "description": "A historical analysis of the books that influenced Austen’s novels.",
+    "author": "Katherine Harkup",
+    "publisher": "Bloomsbury",
+    "category": "History",
+     "condition": "new"
+  },
+  {
+    "id": 22,
+    "title": "The Other in Saudi Novel",
+    "price": 94,
+    "image": "/images/the-other-in-saudi-novel.jpg",
+    "description": "An academic exploration of identity and the outsider figure in Saudi literature.",
+    "author": "Fawzia Al-Bakr",
+    "publisher": "Academic Books KSA",
+    "category": "History",
+     "condition": "new"
+  },
+  {
+    "id": 23,
+    "title": "Precious",
+    "price": 101,
+    "image": "/images/precious.jpg",
+    "description": "A raw and emotional story of overcoming trauma.",
+    "author": "Sapphire",
+    "publisher": "Vintage Books",
+    "category": "History",
+     "condition": "new"
+  },
+  {
+    "id": 24,
+    "title": "Righting Wrongs",
+    "price": 108,
+    "image": "/images/righting-wrongs.jpg",
+    "description": "A historical account of justice, activism, and change.",
+    "author": "Susan Gluck Mezey",
+    "publisher": "Oxford University Press",
+    "category": "History",
+     "condition": "new"
+  }
+]

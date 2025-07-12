@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+
+      height: 100vh;
+      position: relative;
+    }
+
+    .half {
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      margin: 7rem;
+      background-size: contain;
+      background-position: center;
+    }
+
+    .left {
+      left: 0;
+      background-image: url("images/pattern1.jpg");
+    }
+
+    .right {
+      right: 0;
+      background-image: url("images/pattern2.jpg");
+    }
+
+    .box {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+      margin: 4rem auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #9A884C;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    .switch-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1rem;
+    }
+
+    .switch-buttons button {
+      width: 48%;
+      background-color: #9A884C;
+    }
+
+    .switch-buttons button.active {
+      background-color: #ccc;
+    }
+
+    .form-section {
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    .password-box {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      cursor: pointer;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .remember input {
+      width: auto;
+      margin-right: 5px;
+    }
+
+    .message {
+      color: #74642F;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header">
+    <div class="top-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="social-links">
+              <ul>
+                <li>
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-element">
+              <div class="username" id="usernameDisplay"></div>
+              <a href="account.html" class="user-account for-buy">
+                <i class="fa-solid fa-user"></i> <span>Account</span>
+              </a>
+
+
+              <div class="search-bar">
+                <button class="search-toggle">
+                  <i class="fas fa-search"></i>
+                  <input class="search-input" type="search" placeholder="Search" />
+                </button>
+              </div>
+            </div>
+
+
+
+          </div><!--top-right-->
+        </div>
+
+      </div>
+    </div>
+    </div><!--top-content-->
+    <div class="container-fluid main_header">
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class="main-logo">
+            <a href="home.html"><img src="images/main-logo.png" alt="logo"></a>
+          </div>
+
+        </div>
+
+        <div class="col-md-8">
+
+          <nav id="navbar">
+            <div class="main-menu stellarnav">
+              <ul class="menu-list">
+                <li class="menu-item active nav-link text-secondary"><a href="home.html">Home</a></li>
+                <li class="menu-item nav-link text-secondary"><a href="Books.html">Our Store</a></li>
+                <li class="menu-item nav-link text-secondary"><a href="sell.html">sell yore Books</a></li>
+                <li class="menu-item nav-link text-secondary"><a href="cart.html">Cart</a></li>
+                <li class="menu-item nav-link text-secondary"><a href="wish.html">Wish List</a></li>
+                <li class="menu-item nav-link text-secondary"><a href="about.html">About us</a></li>
+              </ul>
+              <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="half left"></div>
+  <div class="half right"></div>
+  <div class="box">
+    <div class="switch-buttons">
+      <button id="loginBtn" class="active" onclick="showForm('login')">Login</button>
+      <button id="registerBtn" onclick="showForm('register')">Register</button>
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="form-section active">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Your Email" />
+      <div class="password-box">
+        <input type="password" id="loginPassword" placeholder="Password" />
+        <span class="toggle-password" onclick="togglePassword('loginPassword')">👁️</span>
+      </div>
+      <div class="remember">
+        <input type="checkbox" id="rememberMe" />
+        <label for="rememberMe">Remember me</label>
+      </div>
+      <button onclick="login()">Login</button>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerForm" class="form-section">
+      <h2>Register</h2>
+      <input type="text" id="username" placeholder="Your Name" />
+      <input type="email" id="email" placeholder="Your Email" />
+      <input type="tel" id="phone" placeholder="Phone Number" />
+      <div class="password-box">
+        <input type="password" id="password" placeholder="Password" />
+        <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+      </div>
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" />
+      <button onclick="register()">Register</button>
+    </div>
+  </div>
+
+  <script>
+    // function showMessage(msg) {
+    //   document.getElementById("message").innerText = msg;
+    //   setTimeout(() => {
+    //     document.getElementById("message").innerText = "";
+    //   }, 4000);
+    // }
+
+    // function showForm(form) {
+    //   document.getElementById("loginForm").classList.remove("active");
+    //   document.getElementById("registerForm").classList.remove("active");
+    //   document.getElementById("loginBtn").classList.remove("active");
+    //   document.getElementById("registerBtn").classList.remove("active");
+
+    //   if (form === "login") {
+    //     document.getElementById("loginForm").classList.add("active");
+    //     document.getElementById("loginBtn").classList.add("active");
+    //   } else {
+    //     document.getElementById("registerForm").classList.add("active");
+    //     document.getElementById("registerBtn").classList.add("active");
+    //   }
+    // }
+
+    // function togglePassword(id) {
+    //   const input = document.getElementById(id);
+    //   input.type = input.type === "password" ? "text" : "password";
+    // }
+
+    // function register() {
+    //   const username = document.getElementById("username").value.trim();
+    //   const email = document.getElementById("email").value.trim();
+    //   const phone = document.getElementById("phone").value.trim();
+    //   const password = document.getElementById("password").value;
+    //   const confirmPassword = document.getElementById("confirmPassword").value;
+
+    //   if (!username || !email || !phone  || !password || !confirmPassword) {
+    //     showMessage("Please fill in all fields.");
+    //     return;
+    //   }
+
+    //   if (!email.includes("@")) {
+    //     showMessage("Please enter a valid email.");
+    //     return;
+    //   }
+
+    //   if (password.length < 6) {
+    //     showMessage("Password must be at least 6 characters.");
+    //     return;
+    //   }
+
+    //   if (password !== confirmPassword) {
+    //     showMessage("Passwords do not match.");
+    //     return;
+    //   }
+
+    //   const userData = { username, email, phone, password };
+    //   localStorage.setItem("userData", JSON.stringify(userData));
+    //   showMessage("Registered successfully. You can now log in.");
+    //   showForm("login");
+    // }
+
+    // function login() {
+    //   const email = document.getElementById("loginEmail").value.trim();
+    //   const password = document.getElementById("loginPassword").value;
+    //   const rememberMe = document.getElementById("rememberMe").checked;
+
+    //   const savedUser = JSON.parse(localStorage.getItem("userData"));
+
+    //   if (!email || !password) {
+    //     showMessage("Please fill in all fields.");
+    //     return;
+    //   }
+
+    //   if (!savedUser || savedUser.email !== email || savedUser.password !== password) {
+    //     showMessage("Invalid email or password.");
+    //     return;
+    //   }
+
+    //   localStorage.setItem("username", savedUser.username);
+
+    //   if (rememberMe) {
+    //     localStorage.setItem("rememberMe", "true");
+    //   } else {
+    //     localStorage.removeItem("rememberMe");
+    //   }
+
+    //   window.location.href = "index.html";
+    // }
+
+    // document.addEventListener("DOMContentLoaded", () => {
+    //   if (localStorage.getItem("username") && localStorage.getItem("rememberMe")) {
+    //     window.location.href = "index.html";
+    //   }
+    // });
+    function showForm(type) {
+      document.getElementById("loginForm").classList.remove("active");
+      document.getElementById("registerForm").classList.remove("active");
+      document.getElementById("loginBtn").classList.remove("active");
+      document.getElementById("registerBtn").classList.remove("active");
+
+      if (type === "login") {
+        document.getElementById("loginForm").classList.add("active");
+        document.getElementById("loginBtn").classList.add("active");
+      } else {
+        document.getElementById("registerForm").classList.add("active");
+        document.getElementById("registerBtn").classList.add("active");
+      }
+
+      showMessage(""); // clear message
+    }
+
+    function showMessage(msg) {
+      document.getElementById("message").textContent = msg;
+    }
+
+    function register() {
+  const username = document.getElementById("username").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  if (!username || !email || !phone || !password || !confirmPassword) {
+    showMessage("Please fill in all fields.");
+    return;
+  }
+
+  if (!email.includes("@")) {
+    showMessage("Please enter a valid email.");
+    return;
+  }
+
+  if (password.length < 6) {
+    showMessage("Password must be at least 6 characters.");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    showMessage("Passwords do not match.");
+    return;
+  }
+
+  const userData = { username, email, phone, password };
+
+  // ✅ حفظ بيانات المستخدم + تسجيل الدخول مباشرة
+  localStorage.setItem("userData", JSON.stringify(userData));
+  localStorage.setItem("username", username); // <<< تسجيل الدخول تلقائي بعد الريجستر
+
+  showMessage("Registered successfully. Redirecting...");
+
+  setTimeout(() => {
+    window.location.href = "home.html"; 
+  }, 1500);
+}
+
+
+    function login() {
+      const email = document.getElementById("loginEmail").value.trim();
+      const pass = document.getElementById("loginPassword").value;
+      const saved = JSON.parse(localStorage.getItem("userData"));
+
+      if (!email || !pass) {
+        showMessage("Please enter email and password.");
+        return;
+      }
+
+      if (!saved || saved.email !== email || saved.password !== pass) {
+        showMessage("Invalid email or password.");
+        return;
+      }
+
+      localStorage.setItem("username", saved.name); // Save session
+      showMessage("Login successful!");
+      setTimeout(() => window.location.href = "home.html", 1000);
+    }
+
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

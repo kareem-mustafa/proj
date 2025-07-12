@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Details</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f6f6f6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .book-details-container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .book-details-card {
+  display: flex;
+  flex-direction: row-reverse; 
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  gap: 30px;
+  padding: 30px;
+  flex-wrap: wrap;
+  align-items: center; 
+}
+
+.book-detail-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;  
+  height: 100%;
+}
+
+
+    .book-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+
+    .book-detail-info h2 {
+      font-size: 30px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+      font-family: 'Georgia', serif;
+    }
+
+    .book-detail-info p {
+      font-size: 16px;
+      color: #555;
+      margin: 0;
+    }
+
+    .buy-button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      background-color: #74642F;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      width: fit-content;
+    }
+
+    .buy-button:hover {
+      background-color: #5c5225;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .book-details-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+
+      .book-image {
+        max-width: 100%;
+      }
+
+      .book-detail-info {
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="book-details" class="book-details-container"></div>
+
+  <script src="details.js"></script>
+</body>
+</html>
+
